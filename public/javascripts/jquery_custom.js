@@ -151,10 +151,7 @@ jQuery(document).ready(function($){
 			$('#usermessagea').html(''); 
 			addLoading();
 			
-			$.post( $(this).attr('action'), datastring, function(response){
-				$('#usermessagea').html(response);
-				removeLoading();	
-			});
+			return true;
 		}
 		else    
 			addError('<p class="error">One or more field aren\'t filled correctly!</p>', this);
