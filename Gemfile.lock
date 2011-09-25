@@ -164,6 +164,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  rails (= 3.0.10)
   refinerycms (~> 1.0.8)
   refinerycms-blog (~> 1.6.1)
   refinerycms-i18n (~> 1.0.0)
