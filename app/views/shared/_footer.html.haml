@@ -11,6 +11,21 @@
         %li
           %a{:href => "http://twitter.com/YIW/"} Follow us on twitter
     / END SOCIALS
+
+    .section
+      %h3 Tweets
+      .twitter-container
+      :javascript
+        jQuery(function(){
+        	jQuery('.twitter-container').tweetable({
+        		id: 'tweets',
+        		username: 'manoamaro', 
+        		time: true, 
+        		limit: 2, 
+        		replies: true
+        	});
+        });
+
     / START GET IN TOUCH
     .section.last
       %h3 Get in touch
