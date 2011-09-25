@@ -1,42 +1,27 @@
 / START SLIDER
-#slider
-  .inner
-    / START PANEL
-    #panel1.panel
-      .text
-        %h1 Semantic Web
-        %h2 in your Ginga TV
-        %p
-          Recomendation system, semantic queries, real time stats, and lots more
-      %img{:alt => "Bolder Theme, for your corporate site", :src => "/images/slider/butterfly.png"}/
-    / END PANEL
-    / START PANEL
-    #panel2.panel
-      .text
-        %h1 Page 2
-        %h2 in your Ginga TV
-        %p
-          Recomendation system, semantic queries, real time stats, and lots more
-      %img{:alt => "Bolder Theme, for your corporate site", :src => "/images/slider/ld.png"}/
-    / END PANEL
-  .clear
-/ START NAV SLIDER
-#nav-slider
-  .inner
-    %ul
-      %li.current.first
-        %a{:href => "#panel1"} Semantic Web
-        %span in your Ginga TV
-      %li.current.first
-        %a{:href => "#panel2"} page 2
-        %span description page 2
-  .clear
-/ END NAV SLIDER
+#slideshow
+  .images
+    .container
+      - @page.images.each do |img|
+        = image_tag img.url, :title => 'image'
+  .shadow-slideshow
 :javascript
-  jQuery(document).ready(function($){
-    $('#nav-slider ul').arrowFade({
-      speed: 500,
-      timeout: 5000			
-    });
-  });        
+        jQuery(document).ready(function($){
+            $('#slideshow .container').nivoSlider({
+                controlNav:false, 
+                directionNav:false, 
+                keyboardNav:false, 
+                slices:20,
+                captionOpacity:0,
+                animSpeed: 500,
+                pauseTime: 3000
+            });
+          });
 / END SLIDER
+
+/ START CONTENT
+#content
+  .inner
+    %h2.title-page= @page.title
+    = raw @page.content_for(:body)
+/ END CONTENT
