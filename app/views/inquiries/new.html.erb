@@ -1,0 +1,74 @@
+<div id="content">
+  <div class="inner">                 
+	  <div class="text">
+      <h2 class="title-page">Contact</h2>
+			<p>
+			
+			</p>
+			<div id="usermessagea"></div>
+
+      <%= form_for @inquiry, :html => {:class=>"form-contact", :id=>"form-contact"} do |f| %>
+        <%= render :partial => "/shared/admin/error_messages",
+                   :locals => {
+                     :object => @inquiry,
+                     :include_object_name => true
+                   } %>
+               
+        <ol class="cf-ol">
+		    <li>
+			    <%= f.required_label :name %>
+			    <%= f.text_field :name, :class => "required" %> 
+			    <span class="reqtxt">(required)</span>
+		    </li>
+		    <li>
+			    <%= f.required_label :email %>
+			    <%= f.text_field :email, :class => "required" %> 
+			    <span class="reqtxt">(required)</span>
+		    </li>
+		    <li>
+			    <%= f.label :phone %>
+			    <%= f.text_field :phone %> 
+		    </li>
+		    <li>
+			    <%= f.required_label :message %>
+			    <%= f.text_area :message, :rows => 8, :cols => 30, :class => "area" %>
+			    <span class="reqtxt">(required)</span>
+		    </li>
+        <p class="cf-sb">
+          <%= f.submit t('.send') %>
+		    </p>
+      <% end %>
+    </div>
+    <div class="sidebar">     
+		  <div class="widget">
+        <h2>Get in touch</h2>
+        <ul>                           
+            <li id="phone-icon"><strong>CALL US:</strong> + 034 567921</li>
+            <li id="fax-icon"><strong>FAX US:</strong> + 034 567921</li>                     
+        </ul>
+      </div>                        
+      <div class="clear"></div>
+      <div class="widget">
+        <h2>Social</h2>
+        <a href="#" class="socials facebook" title="Facebook">facebook</a>
+			  <a href="#" class="socials rss" title="Rss">rss</a>
+			  <a href="#" class="socials twitter" title="Twitter">twitter</a>
+			  <a href="#" class="socials youtube" title="Youtube">youtube</a>
+			  <a href="#" class="socials yahoo" title="Yahoo">yahoo</a>
+			  <a href="#" class="socials vimeo" title="Vimeo">vimeo</a>
+			  <a href="#" class="socials flickr" title="Flickr">flickr</a>
+			  <a href="#" class="socials blogger" title="Blogger">blogger</a>
+        <div class="clear"></div> 
+      </div>                                    
+      <div class="clear"></div>
+      <div class="widget">
+        <h2>Find Us</h2>
+        <address>
+          Bolder Theme - Street Red 15<br>
+	  		  0000156 NY - New York                        
+			  </address>     
+      </div>
+	  </div>
+    <div class="clear"></div>
+  </div>
+</div>
