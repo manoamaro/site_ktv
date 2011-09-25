@@ -1,0 +1,46 @@
+<% flash.each do |key, value| %>
+ <div id='flash' class="flash flash_<%= key %>">
+   <%= value %>
+ </div>
+<% end %>
+
+<div class="date">                                                     
+  <h3 class="title-blog">
+    <a href="blog_single.html" title="Bolder, a new WordPress Theme &#8211; buy it on Theme Forest">
+      <%= @blog_post.title %>
+    </a>
+  </h3> 
+  <div class="mon-year"><span><%= @blog_post.published_at.to_date.strftime("%b") %></span><br /><%= @blog_post.published_at.to_date.year %></div>
+  <div class="day"><%= @blog_post.published_at.to_date.day %></div>
+  <div class="clear"></div>
+</div>
+
+<div class="clear line"></div>
+
+<p class="meta">
+  <span class="left">posted by <%= @blog_post.author.username %>| </span> 
+<span class="left tags">on tags | </span>  
+  <span class="left comment">
+  <% if BlogPost.comments_allowed? %>
+    <% if @blog_post.comments.any? %>
+       (<%= pluralize(@blog_post.comments.approved.count, t('blog.shared.comments.singular')) %>)
+    <% else %>
+          (<%= t('blog.shared.comments.none') %>)
+    <% end %>
+  <% end %>
+  </span>
+</p>
+
+<div class="clear"></div>
+
+<div class="hentry">
+  <p>
+    <%= @blog_post.body.html_safe %>
+  </p>
+</div>
+<div class="clear"></div>
+<% if BlogPost::ShareThis.enabled? %>
+  <span class="st_sharethis" displayText="ShareThis"></span>
+<% end %>
+<%= render :partial => '/shared/draft_page_message' unless @blog_post.nil? or @blog_post.live? -%>
+<%= render 'nav' if next_or_previous?(@blog_post) %>

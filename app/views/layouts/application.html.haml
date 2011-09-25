@@ -1,0 +1,50 @@
+!!!
+%html{:class => "cufon-active cufon-ready"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    = raw "<meta name=\"description\" content=\"#{@meta.meta_description}\" />" if @meta.meta_description.present?
+    = raw "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\">" if @meta.meta_keywords.present?
+    = yield :meta
+
+    %title
+      = browser_title(yield(:title))
+    = stylesheet_link_tag "layout/style", "layout/prettyPhoto", "layout/tipsy", "layout/jCarousel", "colors/blue"
+    = yield :stylesheets
+    = javascript_include_tag "jquery_new", "ui_core", "jquery_cycle_all_min", "jquery_nivo_slider", "jquery_easing", "jquery_prettyPhoto", "jquery_jcarousel_min", "jquery_tipsy", "jquery_arrowFade", "ui_tabs", "jquery_custom", "jquery_tweetable", "cufon-yui"
+
+    :css
+      cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!important;display:inline-block!important;position:relative!important;vertical-align:middle!important;font-size:1px!important;line-height:1px!important;}cufon cufontext{display:-moz-inline-box!important;display:inline-block!important;width:0!important;height:0!important;overflow:hidden!important;text-indent:-10000in!important;}cufon canvas{position:relative!important;}}@media print{cufon{padding:0!important;}cufon canvas{display:none!important;}}
+
+    = javascript_include_tag "waukegan_font"
+    = csrf_meta_tag
+    %link{:href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
+    %link{:href => "favicon.ico", :rel => "icon", :type => "image/x-icon"}/
+    = auto_discovery_link_tag(:rss, news_items_url(:format => 'rss'))
+    
+    :javascript
+      Cufon.replace('h1, h2, h3:not(#footer h3, .title-blog), h4, h5, h6, table th', {fontFamily: 'Waukegan'});
+      //Cufon.replace('.sidebar-nav a', {fontFamily: 'Champagne', hover: true});       
+      jQuery(document).ready(function($){
+          $("a[rel^='prettyPhoto']").prettyPhoto({
+              theme: 'facebook'});
+      });
+    
+  %body.no_js
+    #top-space
+    = render 'shared/header'
+    = yield
+
+    .news-home
+      .inner
+        %h2 News
+        %ul
+          - @news_items = NewsItem.latest.translated
+          - @news_items.each do |item|
+            %li
+              = link_to item.title, news_item_url(item)
+              |
+              = l(item.publish_date, :format => :long)
+      .clear
+   
+    = render 'shared/footer'
+

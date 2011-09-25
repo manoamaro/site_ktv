@@ -1,0 +1,24 @@
+<li class="comment depth-1">
+	<div class="comment-container">
+  		<div class="comment-author vcard">
+  		    <%= image_tag comment.avatar_url, :alt => comment.name, :class => "avatar avatar-75 photo", :height => "75" :width => "75" %>
+			<cite class="fn"><%= comment.name %></cite>
+		</div>
+		<div class="comment-meta commentmetadata">
+  		<div class="intro">
+      		<div class="commentDate">
+      		  <a href="#"><%= t('blog.posts.comments.time_ago', :time => time_ago_in_words(comment.created_at)) %></a> 
+		      </div>
+    			<div class="commentNumber">#&nbsp;3</div>
+  		</div>
+			<div class="comment-body">
+  			<p>
+    			<%= simple_format auto_link(comment.message.to_s) %>
+  			</p>
+  		</div>
+			<div class="reply">
+  			<a rel="nofollow" class="comment-reply-link" href="#" onclick="return false">Reply</a>        		
+			</div><!-- .reply -->
+  	</div><!-- .comment-meta .commentmetadata -->
+	</div><!-- #comment-##  -->
+</li>

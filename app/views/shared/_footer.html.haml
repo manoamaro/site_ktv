@@ -1,0 +1,54 @@
+#footer
+  .inner.three
+    / START SOCIALS
+    .section
+      %h3 Socials
+      %ul.menu
+        %li
+          %a{:href => "http://feeds.feedburner.com/yourinspirationweb/HuJt"} Subscribe feed
+        %li
+          %a{:href => "http://www.facebook.com/YIWeb"} Our Facebook page
+        %li
+          %a{:href => "http://twitter.com/YIW/"} Follow us on twitter
+    / END SOCIALS
+    / START GET IN TOUCH
+    .section.last
+      %h3 Get in touch
+      .textwidget
+        %address
+          Bolder Theme,
+          %br/
+          115 Avenue street NY
+          %br/
+          = succeed ":" do
+            %strong Phone
+          + 39 347 8785621
+          %br/
+        %a.contact{:href => "#"}
+          %strong Have a question?
+          %br/
+          %span Contact us
+    / END GET IN TOUCH
+    .clear
+/ END FOOTER
+/ START COPYRIGHT
+%p#copyright
+  Copyright 2010 - Bolder Theme, theme by
+  %a{:href => "http://www.yourinspirationweb.com/en"} Your Inspiration Web
+  | purchase it on
+  %a{:href => "http://themeforest.net/?ref=Sara_p"} Theme Forest
+/ END COPYRIGHT
+
+:javascript
+  Cufon.now();
+  
+:javascript
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-8632327-9']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();

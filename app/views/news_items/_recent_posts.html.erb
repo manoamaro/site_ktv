@@ -1,0 +1,14 @@
+<div class="sidebar"> 
+  <div class="widget">
+  	<h2>Recent Posts</h2>
+		<div class="recent-post">
+    <% @news_items.each do |item| %>
+			<div class="link">
+			  <%= link_to item.title, news_item_url(item) %>
+			  <small><%= l(item.publish_date, :format => :long) %></small>
+			  <div class="clear"></div>
+		  </div>
+	  <% end %>
+	  </div>
+  </div>  
+</div>
