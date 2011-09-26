@@ -42,30 +42,48 @@
     <div class="sidebar">     
 		  <div class="widget">
         <h2>Get in touch</h2>
-        <ul>                           
-            <li id="phone-icon"><strong>CALL US:</strong> + 034 567921</li>
-            <li id="fax-icon"><strong>FAX US:</strong> + 034 567921</li>                     
+        <ul>
+            <% if RefinerySetting.get('phone') %>
+              <li id="phone-icon"><strong>CALL US:</strong><%= RefinerySetting.get('phone') %></li>
+            <% end %>
+            <% if RefinerySetting.get('fax') %>
+              <li id="fax-icon"><strong>FAX US:</strong><%= RefinerySetting.get('fax') %></li>
+            <% end %>
         </ul>
       </div>                        
       <div class="clear"></div>
       <div class="widget">
         <h2>Social</h2>
-        <a href="#" class="socials facebook" title="Facebook">facebook</a>
-			  <a href="#" class="socials rss" title="Rss">rss</a>
-			  <a href="#" class="socials twitter" title="Twitter">twitter</a>
-			  <a href="#" class="socials youtube" title="Youtube">youtube</a>
-			  <a href="#" class="socials yahoo" title="Yahoo">yahoo</a>
-			  <a href="#" class="socials vimeo" title="Vimeo">vimeo</a>
-			  <a href="#" class="socials flickr" title="Flickr">flickr</a>
-			  <a href="#" class="socials blogger" title="Blogger">blogger</a>
+        <% if RefinerySetting.get('facebook_link') %>
+          <%= link_to "facebook", RefinerySetting.get('facebook_link'), :class => "socials facebook", :title => "Facebook" %>
+        <% end %>
+        <%= link_to "rss", news_items_url(:format => 'rss'), :class => "socials rss", :title => "RSS" %>
+        <% if RefinerySetting.get('twitter_link') %>
+          <%= link_to "twitter", RefinerySetting.get('twitter_link'), :class => "socials twitter", :title => "Twitter" %>
+        <% end %>
+        <% if RefinerySetting.get('youtube_link') %>
+          <%= link_to "youtube", RefinerySetting.get('youtube_link'), :class => "socials youtube", :title => "Youtube" %>
+        <% end %>
+        <% if RefinerySetting.get('yahoo_link') %>
+          <%= link_to "yahoo", RefinerySetting.get('yahoo_link'), :class => "socials yahoo", :title => "Yahoo" %>
+        <% end %>
+        <% if RefinerySetting.get('vimeo_link') %>
+          <%= link_to "vimeo", RefinerySetting.get('vimeo_link'), :class => "socials vimeo", :title => "Vimeo" %>
+        <% end %>
+        <% if RefinerySetting.get('flickr_link') %>
+          <%= link_to "flickr", RefinerySetting.get('flickr_link'), :class => "socials flickr", :title => "Flickr" %>
+        <% end %>
+        <% if RefinerySetting.get('blogger_link') %>
+          <%= link_to "blogger", RefinerySetting.get('blogger_link'), :class => "socials blogger", :title => "Blogger" %>
+        <% end %>
         <div class="clear"></div> 
       </div>                                    
       <div class="clear"></div>
       <div class="widget">
         <h2>Find Us</h2>
         <address>
-          Bolder Theme - Street Red 15<br>
-	  		  0000156 NY - New York                        
+          <%= RefinerySetting.get('contact_address_1') %><br>
+	  		  <%= RefinerySetting.get('contact_address_2') %>
 			  </address>     
       </div>
 	  </div>

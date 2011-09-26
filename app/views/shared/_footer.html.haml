@@ -1,45 +1,41 @@
 #footer
   .inner.three
+  
+    .section
+      %h3 #{RefinerySetting.get('site_name')}
+      %ul.menu
+        - @menu_pages.roots.each do |menu|
+          %li
+            = link_to menu.title, menu.url
+  
     / START SOCIALS
     .section
       %h3 Socials
       %ul.menu
         %li
-          %a{:href => "http://feeds.feedburner.com/yourinspirationweb/HuJt"} Subscribe feed
-        %li
-          %a{:href => "http://www.facebook.com/YIWeb"} Our Facebook page
-        %li
-          %a{:href => "http://twitter.com/YIW/"} Follow us on twitter
+          = link_to 'Subscribe feed', news_items_url(:format => 'rss')
+        - if RefinerySetting.get('facebook_link')
+          %li
+            = link_to 'Our Facebook Page', RefinerySetting.get('twitter_link')
+        - if RefinerySetting.get('twitter_link')
+          %li
+            = link_to 'Follow us on twitter', RefinerySetting.get('twitter_link')
     / END SOCIALS
-
-    .section
-      %h3 Tweets
-      .twitter-container
-      :javascript
-        jQuery(function(){
-        	jQuery('.twitter-container').tweetable({
-        		id: 'tweets',
-        		username: 'manoamaro', 
-        		time: true, 
-        		limit: 2, 
-        		replies: true
-        	});
-        });
-
     / START GET IN TOUCH
     .section.last
       %h3 Get in touch
       .textwidget
         %address
-          Bolder Theme,
+          = RefinerySetting.get('contact_address_1')
           %br/
-          115 Avenue street NY
+          = RefinerySetting.get('contact_address_2')
           %br/
-          = succeed ":" do
-            %strong Phone
-          + 39 347 8785621
+          - if RefinerySetting.get('phone')
+            = succeed ":" do
+              %strong Phone
+            = RefinerySetting.get('phone')
           %br/
-        %a.contact{:href => "#"}
+        %a.contact{:href => "/contact"}
           %strong Have a question?
           %br/
           %span Contact us
