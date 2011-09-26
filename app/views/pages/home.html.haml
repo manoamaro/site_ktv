@@ -2,6 +2,8 @@
 #slideshow
   .images
     .container
+      - if @page.images.empty?
+        = image_tag 'slider/s1.png', :title => 'image'
       - @page.images.each do |img|
         = image_tag img.url, :title => 'image'
   .shadow-slideshow
