@@ -66,8 +66,6 @@
   </div>
 </div>
 
-<%= render :partial => "/shared/content_page", :locals => { :remove_automatic_sections => true }  %>
-
 <% content_for :stylesheets, stylesheet_link_tag('refinerycms-blog') %>
 <% content_for :before_javascript_libraries, jquery_include_tags(:jquery_ui => false) %>
 <% content_for :javascripts do %>

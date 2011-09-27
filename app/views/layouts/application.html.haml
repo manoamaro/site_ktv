@@ -5,6 +5,8 @@
     = raw "<meta name=\"description\" content=\"#{@meta.meta_description}\" />" if @meta.meta_description.present?
     = raw "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\">" if @meta.meta_keywords.present?
     = yield :meta
+    %meta{:content => "ADhrLnOGz0tx5_lFq6rRb-Rjn8DCCgaKQhXoibzyHAs", :name => "google-site-verification"}/
+    = csrf_meta_tag
 
     %title
       = browser_title(yield(:title))
@@ -16,7 +18,6 @@
       cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!important;display:inline-block!important;position:relative!important;vertical-align:middle!important;font-size:1px!important;line-height:1px!important;}cufon cufontext{display:-moz-inline-box!important;display:inline-block!important;width:0!important;height:0!important;overflow:hidden!important;text-indent:-10000in!important;}cufon canvas{position:relative!important;}}@media print{cufon{padding:0!important;}cufon canvas{display:none!important;}}
 
     = javascript_include_tag "waukegan_font"
-    = csrf_meta_tag
     %link{:href => "/favico.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
     %link{:href => "/favicon.ico", :rel => "icon", :type => "image/x-icon"}/
     = auto_discovery_link_tag(:rss, news_items_url(:format => 'rss'))
