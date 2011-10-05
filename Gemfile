@@ -31,6 +31,7 @@ gem 'mysql'
 # end
 
 gem 'haml'
+gem 'sass'
 
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
@@ -59,3 +60,5 @@ gem 'refinerycms-page-images',  '~> 1.0'
 gem 'refinerycms-i18n',         '~> 1.0.0'
 
 # END USER DEFINED
+
+gem 'refinerycms-staffs', '1.0', :path => 'vendor/engines'

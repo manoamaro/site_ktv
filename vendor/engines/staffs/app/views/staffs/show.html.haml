@@ -1,0 +1,10 @@
+#content
+  .inner
+    %h2.title-page= @staff.name
+    %h4= @staff.title
+    %p
+      = image_tag @staff.image.url, :class => 'alignright', :style => 'max-width:400px'
+      = @staff.bio.html_safe
+    .clear
+      
+      

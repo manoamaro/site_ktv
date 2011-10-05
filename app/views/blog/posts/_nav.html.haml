@@ -1,0 +1,6 @@
+%nav#next_prev_article
+  - if @blog_post.next.present?
+    = link_to (truncate(@blog_post.next.title) + " »").html_safe, @blog_post.next, :class => 'next'
+  = link_to t('blog.posts.show.blog_home'), blog_root_path, :class => 'home'
+  - if @blog_post.prev.present?
+    = link_to ("« " + truncate(@blog_post.prev.title)).html_safe, @blog_post.prev, :class => 'prev'

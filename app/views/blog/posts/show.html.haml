@@ -1,0 +1,49 @@
+#content
+  .inner
+    .text
+      = render 'post'
+      - if BlogPost.comments_allowed?
+        #comments
+          %h3#comments-title
+            - if BlogPost.comments_allowed?
+              - if @blog_post.comments.any?
+                (#{pluralize(@blog_post.comments.approved.count, t('blog.shared.comments.singular'))})
+              - else
+                (#{t('blog.shared.comments.none')})
+          - if (comments = @blog_post.comments.approved).any?
+            %ol.commentlist
+              = render :partial => "comment", :collection => comments
+          - else
+            %p
+              = t('blog.shared.comments.none')
+              \.
+          - flash.each do |key, value|
+            #flash{:class => "flash flash_#{key}"}
+              = value
+          #respond
+            %h3#reply-title Leave a Reply
+            = form_for [:blog_post, @blog_comment], :html => {:id => 'commentform'} do |f|
+              = render :partial => "/shared/admin/error_messages", |
+                :locals => {                                       |
+                  :object => f.object,                             |
+                  :include_object_name => true                     |
+                }                                                  |
+              %p.comment-form-comment
+                %label{:for => "comment"}
+                  Comment
+                  %img.comment-avatar{:alt => "avatar", :src => "/images/noavatar.png", :style => "opacity: 1; "}/
+                = f.text_area :message, :rows => 8, :cols => 45, :id => "comment"
+              %p.comment-form-author
+                %label{:for => "author"} Name
+                = f.text_field :name, :id => "author", :size => 30
+              %p.comment-form-email
+                %label{:for => "email"} Email
+                = f.email_field :email, :size => 30, :id => 'email'
+              %p.form-submit
+                = f.submit "Post Comment", :id => "submit"
+    .sidebar
+      = render :partial => "/blog/shared/categories"
+      = render :partial => "/blog/shared/tags"
+      = render :partial => "/blog/shared/rss_feed"
+      = blog_archive_list
+    .clear

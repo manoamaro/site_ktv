@@ -21,7 +21,7 @@ production:
   reconnect: false
   database: site_ktv_production
   pool: 5
-  username: root
-  password: ktv_n40d1g0
+  username: xxx
+  password: xxx
   socket: /var/run/mysqld/mysqld.sock
 

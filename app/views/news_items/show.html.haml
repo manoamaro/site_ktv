@@ -1,0 +1,11 @@
+#content
+  .inner
+    .text.right
+      %h2.title-page= @news_item.title
+      %small
+        = t('.published')
+        = l(@news_item.publish_date, :format => :long)
+      %p
+        = @news_item.body.html_safe
+    = render(:partial => 'recent_posts')
+    .clear

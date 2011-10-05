@@ -1,0 +1,69 @@
+#content
+  .inner
+    .text
+      %h2.title-page Contact
+      %p
+      #usermessagea
+      = form_for @inquiry, :html => {:class=>"form-contact", :id=>"form-contact"} do |f|
+        = render :partial => "/shared/admin/error_messages", |
+          :locals => {                                       |
+            :object => @inquiry,                             |
+            :include_object_name => true                     |
+          }                                                  |
+        %ol.cf-ol
+          %li
+            = f.required_label :name
+            = f.text_field :name, :class => "required"
+            %span.reqtxt (required)
+          %li
+            = f.required_label :email
+            = f.text_field :email, :class => "required"
+            %span.reqtxt (required)
+          %li
+            = f.label :phone
+            = f.text_field :phone
+          %li
+            = f.required_label :message
+            = f.text_area :message, :rows => 8, :cols => 30, :class => "area"
+            %span.reqtxt (required)
+          %p.cf-sb
+            = f.submit "Send", :class => "sendbutton"
+    .sidebar
+      .widget
+        %h2 Get in touch
+        %ul
+          - if RefinerySetting.get('phone')
+            %li#phone-icon
+              %strong CALL US:
+              = RefinerySetting.get('phone')
+          - if RefinerySetting.get('fax')
+            %li#fax-icon
+              %strong FAX US:
+              = RefinerySetting.get('fax')
+      .clear
+      .widget
+        %h2 Social
+        - if RefinerySetting.get('facebook_link')
+          = link_to "facebook", RefinerySetting.get('facebook_link'), :class => "socials facebook", :title => "Facebook"
+        = link_to "rss", news_items_url(:format => 'rss'), :class => "socials rss", :title => "RSS"
+        - if RefinerySetting.get('twitter_link')
+          = link_to "twitter", RefinerySetting.get('twitter_link'), :class => "socials twitter", :title => "Twitter"
+        - if RefinerySetting.get('youtube_link')
+          = link_to "youtube", RefinerySetting.get('youtube_link'), :class => "socials youtube", :title => "Youtube"
+        - if RefinerySetting.get('yahoo_link')
+          = link_to "yahoo", RefinerySetting.get('yahoo_link'), :class => "socials yahoo", :title => "Yahoo"
+        - if RefinerySetting.get('vimeo_link')
+          = link_to "vimeo", RefinerySetting.get('vimeo_link'), :class => "socials vimeo", :title => "Vimeo"
+        - if RefinerySetting.get('flickr_link')
+          = link_to "flickr", RefinerySetting.get('flickr_link'), :class => "socials flickr", :title => "Flickr"
+        - if RefinerySetting.get('blogger_link')
+          = link_to "blogger", RefinerySetting.get('blogger_link'), :class => "socials blogger", :title => "Blogger"
+        .clear
+      .clear
+      .widget
+        %h2 Find Us
+        %address
+          = RefinerySetting.get('contact_address_1')
+          %br
+            = RefinerySetting.get('contact_address_2')
+    .clear

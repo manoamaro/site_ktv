@@ -1,0 +1,9 @@
+.sidebar
+  .widget
+    %h2 Recent Posts
+    .recent-post
+      - @news_items.each do |item|
+        .link
+          = link_to item.title, news_item_url(item)
+          %small= l(item.publish_date, :format => :long)
+          .clear

@@ -1,0 +1,15 @@
+- function = ""
+#content
+  .inner
+    %h2.title-page= @page.title
+    = raw @page.content_for(:body)
+    - @staffs.each do |staff|
+      - if staff.function != function
+        - function = staff.function
+        %h2= function
+      .team
+        = link_to image_tag(staff.thumbnail.url, :height => 96, :width => 96, :class => "alignleft"), staff_path(staff)
+        %h4.title-team
+          = link_to staff.name, staff_path(staff)
+        %p
+          = staff.title

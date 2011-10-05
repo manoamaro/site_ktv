@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    staffs:
+      title: Staffs
+  admin:
+    staffs:
+      actions:
+        create_new: CREATE NEW Staff
+        reorder: REORDR Staffs
+        reorder_done: DUN REORDERIN Staffs
+      records:
+        title: Staffs
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Staffs YET. CLICK "CREATE NEW Staff" 2 ADD UR FURST staff.
+      staff:
+        view_live_html: VIEW DIS staff LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS staff
+        delete: REMOOV DIS staff FOREVR
+  staffs:
+    show:
+      other: OTHR Staffs

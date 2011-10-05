@@ -1,0 +1,8 @@
+- if @blog_categories.any?
+  .widget
+    %h2
+      Categories
+    %ul
+      - @blog_categories.each do |category|
+        %li
+          = link_to "#{category.title} (#{category.post_count})", blog_category_url(category)

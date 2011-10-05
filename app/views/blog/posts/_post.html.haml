@@ -1,0 +1,33 @@
+- flash.each do |key, value|
+  #flash{:class => "flash flash_#{key}"}
+    = value
+.date
+  %h3.title-blog
+    %a{:href => "blog_single.html", :title => "Bolder, a new WordPress Theme – buy it on Theme Forest"}
+      = @blog_post.title
+  .mon-year
+    %span= @blog_post.published_at.to_date.strftime("%b")
+    %br/
+    = @blog_post.published_at.to_date.year
+  .day= @blog_post.published_at.to_date.day
+  .clear
+.clear.line
+%p.meta
+  %span.left
+    posted by #{@blog_post.author.username}|
+  %span.left.tags on tags |
+  %span.left.comment
+    - if BlogPost.comments_allowed?
+      - if @blog_post.comments.any?
+        (#{pluralize(@blog_post.comments.approved.count, t('blog.shared.comments.singular'))})
+      - else
+        (#{t('blog.shared.comments.none')})
+.clear
+.hentry
+  %p
+    = @blog_post.body.html_safe
+.clear
+- if BlogPost::ShareThis.enabled?
+  %span.st_sharethis{:displayText => "ShareThis"}
+= render :partial => '/shared/draft_page_message' unless @blog_post.nil? or @blog_post.live?
+= render 'nav' if next_or_previous?(@blog_post)
